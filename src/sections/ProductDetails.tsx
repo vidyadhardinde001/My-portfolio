@@ -1,62 +1,116 @@
 import React from "react";
-import { Card, CardContent, Typography, Chip, Grid } from "@mui/material";
-import { Bar } from "react-chartjs-2";
-import NutriScoreSection from "./Nutriscore";
 
-interface ProductDetailsProps {
-  selectedProduct: any;
+interface Props {
+  selectedProduct: {
+    image_url?: string;
+    product_name?: string;
+    countries_sold?: string;
+    category?: string;
+    threatened_species?: string;
+    allergens?: string;
+    packaging?: string;
+  };
 }
 
-const generateChartData = (labels: string[], values: number[], label: string) => ({
-  labels,
-  datasets: [
-    {
-      label,
-      data: values,
-      backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(153, 102, 255, 0.2)"],
-      borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 99, 132, 1)", "rgba(255, 206, 86, 1)", "rgba(153, 102, 255, 1)"],
-      borderWidth: 1,
-    },
-  ],
-});
-
-const ProductDetails: React.FC<ProductDetailsProps> = ({ selectedProduct }) => {
-  if (!selectedProduct) return null;
-
+const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
   return (
-    <Grid container spacing={3} sx={{ marginTop: "20px" }}>
-      <Grid item xs={12} sm={6}>
-        <Card>
-          <CardContent>
-            <Typography variant="h5">{selectedProduct.product_name || "Product Name"}</Typography>
-            <img src={selectedProduct.image_url} alt={selectedProduct.product_name} style={{ width: "100%", borderRadius: "8px", marginTop: "10px" }} />
-            <Typography variant="body2" color="textSecondary" sx={{ marginTop: "10px" }}>
-              Brand: {selectedProduct.brands || "N/A"}
-            </Typography>
-            <Chip label={`Quantity: ${selectedProduct.quantity || "N/A"}`} color="primary" sx={{ marginTop: "10px" }} />
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item xs={12} sm={6}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6">Nutritional Breakdown</Typography>
-            <Bar
-              data={generateChartData(
-                ["Energy (kcal)", "Fat (g)", "Sugars (g)", "Salt (g)"],
-                [selectedProduct.nutriments?.energy_kcal || 0, selectedProduct.nutriments?.fat || 0, selectedProduct.nutriments?.sugars || 0, selectedProduct.nutriments?.salt || 0],
-                "Nutrition Per 100g"
-              )}
+    <div className="bg-gray-800 h-full p-6 rounded-lg shadow-md mt-3">
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Product Image */}
+        <div className="w-full md:w-1/3 flex items-center justify-center bg-gray-800 h-[300px] rounded-lg">
+          {selectedProduct.image_url ? (
+            <img
+              src={selectedProduct.image_url}
+              alt="Product"
+              className="w-full h-full object-contain rounded-lg bg-white"
             />
-          </CardContent>
-        </Card>
-      </Grid>
+          ) : (
+            <p className="text-gray-500">No Image</p>
+          )}
+        </div>
 
-      <Grid item xs={12}>
-        <NutriScoreSection selectedProduct={selectedProduct} />
-      </Grid>
-    </Grid>
+        {/* Product Details */}
+        <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Product Name */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Name of Product:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.product_name || "Product Name"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+
+          {/* Countries Sold */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Countries Sold In:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.countries_sold || "Country List"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+
+          {/* Category */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Category:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.category || "Category"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+
+          {/* Threatened Species */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Threatened Species:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.threatened_species || "Species Info"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+
+          {/* Allergens */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Allergens:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.allergens || "Allergen Info"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+
+          {/* Packaging */}
+          <div>
+            <label className="block text-sm font-medium text-white">
+              Packaging:
+            </label>
+            <input
+              type="text"
+              readOnly
+              value={selectedProduct.packaging || "Packaging Info"}
+              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
