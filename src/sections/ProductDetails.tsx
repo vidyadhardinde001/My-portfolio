@@ -14,7 +14,7 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
   return (
-    <div className="bg-gray-800 h-full p-6 rounded-lg shadow-md mt-3">
+    <div className="bg-gray-800 h-full p-6 rounded-lg shadow-md">
       <div className="flex flex-col md:flex-row gap-6">
         {/* Product Image */}
         <div className="w-full md:w-1/3 flex items-center justify-center bg-gray-800 h-[300px] rounded-lg">
@@ -52,7 +52,7 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <input
               type="text"
               readOnly
-              value={selectedProduct.countries_sold || "Country List"}
+              value={selectedProduct.countries || "Not Available"}
               className="w-full mt-1 p-2 border rounded-md bg-gray-50"
             />
           </div>
@@ -65,7 +65,7 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <input
               type="text"
               readOnly
-              value={selectedProduct.category || "Category"}
+              value={selectedProduct.category || "Not Available"}
               className="w-full mt-1 p-2 border rounded-md bg-gray-50"
             />
           </div>
@@ -78,7 +78,11 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <input
               type="text"
               readOnly
-              value={selectedProduct.threatened_species || "Species Info"}
+              value={
+                selectedProduct.threatened_species?.ingredient !== undefined
+                  ? selectedProduct.threatened_species.ingredient
+                  : "Species Info"
+              }
               className="w-full mt-1 p-2 border rounded-md bg-gray-50"
             />
           </div>
@@ -91,7 +95,7 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <input
               type="text"
               readOnly
-              value={selectedProduct.allergens || "Allergen Info"}
+              value={selectedProduct.allergens || "Not Available"}
               className="w-full mt-1 p-2 border rounded-md bg-gray-50"
             />
           </div>
@@ -104,7 +108,7 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <input
               type="text"
               readOnly
-              value={selectedProduct.packaging || "Packaging Info"}
+              value={selectedProduct.packaging || "Not Available"}
               className="w-full mt-1 p-2 border rounded-md bg-gray-50"
             />
           </div>
