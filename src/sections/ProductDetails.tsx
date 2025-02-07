@@ -36,11 +36,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Name of Product:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
               value={selectedProduct.product_name || "Product Name"}
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
 
@@ -49,11 +48,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Countries Sold In:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
-              value={selectedProduct.countries || "Not Available"}
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              value={selectedProduct.countries_sold || "Not Available"}
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
 
@@ -62,11 +60,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Category:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
               value={selectedProduct.category || "Not Available"}
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
 
@@ -75,15 +72,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Threatened Species:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
-              value={
-                selectedProduct.threatened_species?.ingredient !== undefined
-                  ? selectedProduct.threatened_species.ingredient
-                  : "Species Info"
-              }
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              value={selectedProduct.threatened_species || "Not Available"}
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
 
@@ -92,11 +84,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Allergens:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
               value={selectedProduct.allergens || "Not Available"}
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
 
@@ -105,11 +96,10 @@ const ProductDetails: React.FC<Props> = ({ selectedProduct }) => {
             <label className="block text-sm font-medium text-white">
               Packaging:
             </label>
-            <input
-              type="text"
+            <textarea
               readOnly
               value={selectedProduct.packaging || "Not Available"}
-              className="w-full mt-1 p-2 border rounded-md bg-gray-50"
+              className="w-full min-h-[50px] p-2 border rounded-md bg-gray-50 resize-none"
             />
           </div>
         </div>
