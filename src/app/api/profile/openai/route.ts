@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
     // OpenAI prompt
     const prompt = `Based on the following health profile, provide:
-    1. A list of 5-10 recommended foods/nutrients with brief explanations
+    1. What ingredients should you avoid
     2. A list of 5-10 foods/substances to avoid with brief explanations
     
     Health Profile:
