@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import jwt from "jsonwebtoken";
-import FoodSearch from "@/sections/Food_Search";
-import Hero from "@/sections/Hero";
-import IngredientScanPage from "@/sections/barcode";
-import AI from "@/sections/AI";
-import Main from "@/sections/Main";
-import Login from "@/sections/Login";
+import {Hero} from "../sections/Hero";
+import BlenderProjects from "../sections/BlenderProjects";
+import ContactSection from "../sections/ContactSection";
+import Projects from "../sections/Projects";
+import CPProfiles from "../sections/CPProfiles";
+import Skills from "../sections/Skills";
+import Aboutus from "../sections/aboutus";
 
 import Link from "next/link";
 
@@ -53,8 +54,14 @@ const checkAuth = () => {
 
   return (
     <>
-      <Login />
-      <FoodSearch />
+      <Hero />
+      
+      <Projects />
+      
+      <CPProfiles />
+      <Skills />
+      <BlenderProjects />    
+      {/* <Aboutus /> */}
     </>
   );
 }
