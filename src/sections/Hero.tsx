@@ -142,7 +142,7 @@ export const Hero = () => {
           <source src="/assets/bg-video1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20  to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/20"></div>
       </div>
 
       {/* Main Content */}
@@ -160,14 +160,14 @@ export const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.8,
-                ease: [0.16, 0.77, 0.47, 0.97] // Custom cubic-bezier curve
+                ease: [0.16, 0.77, 0.47, 0.97]
               }}
             >
               <span className="block text-xl sm:text-2xl font-light text-blue-200 mb-2 tracking-widest">
-                HELLO, I'M
+                HELLO, I&apos;M
               </span>
               <span className="relative inline-block">
-                <span className="font-semibold bg-gradient-to-r opacity-80 from-white  to-white bg-clip-text text-transparent">
+                <span className="font-semibold bg-gradient-to-r opacity-80 from-white to-white bg-clip-text text-transparent">
                   Vidyadhar Dinde
                 </span>
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full"></span>
@@ -197,8 +197,6 @@ export const Hero = () => {
             <span className="bg-glow-gradient bg-[length:100%_100%] animate-glow-x bg-clip-text">
               {text}
             </span>
-
-
             <Cursor cursorColor="#60a5fa" />
           </motion.div>
 
