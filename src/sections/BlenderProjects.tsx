@@ -107,12 +107,15 @@ const BlenderProjects = () => {
       { threshold: 0.7 }
     );
 
-    videoRefs.current.forEach(video => {
+    // Capture the current refs in a variable for cleanup
+    const currentVideos = videoRefs.current;
+
+    currentVideos.forEach(video => {
       if (video) observer.observe(video);
     });
 
     return () => {
-      videoRefs.current.forEach(video => {
+      currentVideos.forEach(video => {
         if (video) observer.unobserve(video);
       });
     };
@@ -182,7 +185,7 @@ const BlenderProjects = () => {
               >
                 {/* Video thumbnail with autoplay */}
                 <video
-                  ref={el => videoRefs.current[index] = el}
+                  ref={el => { videoRefs.current[index] = el; }}
                   src={project.videoUrl}
                   className="w-full h-full object-cover"
                   loop

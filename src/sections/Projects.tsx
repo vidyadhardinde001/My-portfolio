@@ -55,10 +55,10 @@ const projectData = [
 ];
 
 const ProjectsSection = () => {
-  const [expandedVideo, setExpandedVideo] = useState(null);
-  const [isHoveringVideo, setIsHoveringVideo] = useState(null);
+  const [expandedVideo, setExpandedVideo] = useState<number | null>(null);
+  const [isHoveringVideo, setIsHoveringVideo] = useState<number | null>(null);
 
-  const handleVideoClick = (index) => {
+  const handleVideoClick = (index: number) => {
     setExpandedVideo(expandedVideo === index ? null : index);
   };
 
@@ -135,14 +135,11 @@ const ProjectsSection = () => {
               <div className="mb-6 px-6">
                 <motion.div
                   className={`relative rounded-xl overflow-hidden bg-gray-200 aspect-video flex items-center justify-center ${
-                    isHoveringVideo === index ? 'ring-4' : 'ring-2'
-                  } ring-transparent`}
+                    isHoveringVideo === index
+                      ? `${project.accentColor.replace('bg-', 'ring-')} opacity-70 ring-4`
+                      : 'ring-2 ring-transparent'
+                  }`}
                   initial={false}
-                  animate={{
-                    ringColor: isHoveringVideo === index 
-                      ? `${project.accentColor.replace('bg-', 'ring-')} opacity-70` 
-                      : 'transparent',
-                  }}
                   transition={{ duration: 0.3 }}
                   onHoverStart={() => setIsHoveringVideo(index)}
                   onHoverEnd={() => setIsHoveringVideo(null)}
@@ -158,12 +155,16 @@ const ProjectsSection = () => {
                         muted
                         className="w-full h-full object-cover cursor-pointer"
                         onError={(e) => {
-                          e.target.parentElement.innerHTML = `
-                            <div class="text-gray-500 text-center p-4">
-                              <p>Video failed to load</p>
-                              <p class="text-sm">Please check the video file exists at: ${project.videoUrl}</p>
-                            </div>
-                          `;
+                          const target = e.target as HTMLVideoElement;
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="text-gray-500 text-center p-4">
+                                <p>Video failed to load</p>
+                                <p class="text-sm">Please check the video file exists at: ${project.videoUrl}</p>
+                              </div>
+                            `;
+                          }
                         }}
                       />
                       {expandedVideo !== index && (
