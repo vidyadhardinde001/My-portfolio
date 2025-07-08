@@ -26,7 +26,7 @@ const skillsData = [
     delay: 0.3
   },
   { 
-    title: 'Competitive', 
+    title: 'Competitive Programming', 
     description: '3-star @ Codechef', 
     icon: <FiCpu className="w-6 h-6" />, 
     color: 'from-blue-500 to-blue-700',

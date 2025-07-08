@@ -8,7 +8,7 @@ const projectData = [
     title: 'RoomRadar',
     subtitle: 'PG Accommodation Finder',
     status: 'In Progress',
-    videoUrl: '/videos/sd.mp4',
+    videoUrl: 'none',
     pdfUrl: '/assets/roomradar.pdf',
     githubUrl: 'https://github.com/vidyadhardinde001/CNmain',
     projectUrl: 'https://roomradar-demo.com',
