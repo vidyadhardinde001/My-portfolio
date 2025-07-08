@@ -124,6 +124,25 @@ const BlenderProjects = () => {
     <section id="blender-projects" className="relative py-20 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
       {/* Background elements... */}
 
+      <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="absolute top-20 right-20 w-32 h-32 rounded-full bg-blue-500 opacity-10 blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-40 h-40 rounded-full bg-purple-500 opacity-10 blur-3xl" />
+      {/* Background elements... */}
+
+      <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">3D Art & Animation</h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            A collection of my Blender projects showcasing 3D modeling, animation, and visual effects
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mt-6 rounded-full" />
+        </motion.div>
+
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header... */}
 
